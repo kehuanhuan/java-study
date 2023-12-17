@@ -17,7 +17,7 @@ jar:
 	jar -cvfm $(BIN)/$(JAR_NAME) $(MANIFEST) $(LIBS)/* -C $(CLASSPATH) .
 
 run:
-	java -jar $(BIN)/$(JAR_NAME)
+	java -jar $(BIN)/$(JAR_NAME) -Djava.class.path="libs/*"
 
 clean:
 	rm -rf $(CLASSPATH) $(BIN)/* $(JAR_NAME) $(RESOURCES)/sources.list

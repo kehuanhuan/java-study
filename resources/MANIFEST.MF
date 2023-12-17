@@ -1,4 +1,5 @@
 Manifest-Version: 1.0
 Created-By: 1.5.0_06
 Main-Class: com.demo.Main
+Class-Path: libs/hutool-all-5.8.16.jar
 
