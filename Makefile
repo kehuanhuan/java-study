@@ -14,10 +14,10 @@ test:
 	java -cp "$(CLASSPATH):$(LIBS)/*" com.demo.Main
 
 jar:
-	jar -cvfm $(BIN)/$(JAR_NAME) $(MANIFEST) $(LIBS)/* -C $(CLASSPATH) .
+	jar -cvfm $(BIN)/$(JAR_NAME) $(MANIFEST) -C $(CLASSPATH) . $(LIBS)
 
 run:
-	java -jar $(BIN)/$(JAR_NAME) -Djava.class.path="libs/*"
+	java  -jar $(BIN)/$(JAR_NAME)
 
 clean:
 	rm -rf $(CLASSPATH) $(BIN)/* $(JAR_NAME) $(RESOURCES)/sources.list
