@@ -2,5 +2,5 @@
 out
 libs
 *.jar
-
+target
 

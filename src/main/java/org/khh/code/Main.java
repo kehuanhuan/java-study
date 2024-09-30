@@ -1,32 +1,41 @@
 package org.khh.code;
 
-import org.khh.code.demo.VolatileDemo;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
+import org.khh.code.demo.observer.ObjectFor3D;
+import org.khh.code.demo.observer.Observer1;
+import org.khh.code.demo.observer.Observer2;
+import org.khh.code.demo.strategy.Role;
+import org.khh.code.demo.strategy.RoleA;
+import org.khh.code.demo.strategy.RunJCTQ;
 
-
+@Slf4j
 public class Main {
 
-    private static final Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args)  {
 
-        VolatileDemo volatileDemo = new VolatileDemo();
-
         Thread t = new Thread(() -> {
+            Role roleA = new RoleA("A");
 
-            volatileDemo.sumCount();
+            roleA.setIRunBehavior(new RunJCTQ());
+
+            roleA.run();
+
         });
 
         Thread t2 = new Thread(() -> {
-            volatileDemo.sumCount();
+            ObjectFor3D objectFor3D = new ObjectFor3D();
+
+            objectFor3D.registerObserver(new Observer1());
+            objectFor3D.registerObserver(new Observer2());
+
+            objectFor3D.setMsg("xxx2");
         });
 
         t.start();
         t2.start();
 
-
-        log.info("xx");
+//        log.info("xx");
     }
 
 
